@@ -11,7 +11,6 @@
     <modules>
         <module>rpc-registry</module>
         <module>rpc-registry-zookeeper</module>
-        <module>rpc-server</module>
         <module>rpc-common</module>
         <module>rpc-server</module>
     </modules>

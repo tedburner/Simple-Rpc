@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>rpc</artifactId>
         <groupId>com.simple.rpc</groupId>
@@ -14,27 +12,13 @@
     <artifactId>rpc-server</artifactId>
 
     <dependencies>
-        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
-        <!-- CGLib -->
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-        </dependency>
-        <!-- RPC Common -->
-        <dependency>
-            <groupId>com.simple.rpc</groupId>
-            <artifactId>rpc-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <!-- RPC Registry with ZooKeeper -->
-        <dependency>
-            <groupId>com.simple.rpc</groupId>
-            <artifactId>rpc-registry-zookeeper</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
