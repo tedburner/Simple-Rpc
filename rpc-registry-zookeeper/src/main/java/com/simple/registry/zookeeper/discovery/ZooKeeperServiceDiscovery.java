@@ -20,7 +20,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ZooKeeperServiceDiscovery implements ServiceDiscovery {
 
     private String zkAddress;
-
     public ZooKeeperServiceDiscovery(String zkAddress) {
         this.zkAddress = zkAddress;
     }

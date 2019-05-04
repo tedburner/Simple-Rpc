@@ -10,7 +10,7 @@ import com.simple.rpc.registry.ServiceRegistry;
  * @date: 2019/4/30 17:10
  * @description: 测试基于zk的服务注册于发现
  */
-public class Test {
+public class ZkTest {
 
     public static void main(String[] args) {
         ServiceRegistry registry = new ZooKeeperServiceRegistry("127.0.0.1:2181");

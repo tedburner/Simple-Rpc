@@ -34,13 +34,13 @@ public class ZooKeeperServiceRegistry implements ServiceRegistry {
 
         try {
             String registryPath = ZkConstants.REGISTRY_PATH;
-            if (zkClient.exists(registryPath)) {
+            if (!zkClient.exists(registryPath)) {
                 zkClient.createPersistent(registryPath);
                 log.info("zk create registry node: {}", registryPath);
             }
             //创建服务节点（持久化）
             String servicePath = registryPath + "/" + serviceName;
-            if (zkClient.exists(servicePath)) {
+            if (!zkClient.exists(servicePath)) {
                 zkClient.createPersistent(servicePath);
                 log.info("zk create service node: {}", servicePath);
             }

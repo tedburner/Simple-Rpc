@@ -13,6 +13,7 @@
         <module>rpc-registry-zookeeper</module>
         <module>rpc-server</module>
         <module>rpc-common</module>
+        <module>rpc-server</module>
     </modules>
 
     <properties>
@@ -23,6 +24,7 @@
         <zkclient.version>0.4</zkclient.version>
         <zookeeper.version>3.4.13</zookeeper.version>
         <objenesis.version>2.6</objenesis.version>
+        <cglib.version>3.2.6</cglib.version>
     </properties>
 
     <dependencyManagement>
@@ -69,6 +71,13 @@
                 <groupId>org.objenesis</groupId>
                 <artifactId>objenesis</artifactId>
                 <version>${objenesis.version}</version>
+            </dependency>
+
+            <!-- CGLib -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
             </dependency>
 
             <!-- ZooKeeper -->
