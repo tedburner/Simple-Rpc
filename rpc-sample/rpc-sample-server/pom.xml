@@ -25,11 +25,6 @@
             <artifactId>rpc-server</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.simple.rpc</groupId>
-            <artifactId>rpc-server</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
     <build>

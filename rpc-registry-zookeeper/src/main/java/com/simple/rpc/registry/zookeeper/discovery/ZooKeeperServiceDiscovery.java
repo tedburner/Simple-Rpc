@@ -6,6 +6,8 @@ import com.simple.rpc.registry.ServiceDiscovery;
 import lombok.extern.slf4j.Slf4j;
 import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.collections4.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,8 +18,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * @date: 2019/4/30 15:22
  * @description: 基于ZooKeeper的服务发现接口实现
  */
-@Slf4j
 public class ZooKeeperServiceDiscovery implements ServiceDiscovery {
+
+    private static final Logger log = LoggerFactory.getLogger(ZooKeeperServiceDiscovery.class);
 
     private String zkAddress;
     public ZooKeeperServiceDiscovery(String zkAddress) {

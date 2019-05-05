@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -17,8 +19,9 @@ import java.util.Map;
  * @date: 2019/5/5 09:18
  * @description: RPC服务端处理器（基于netty实现的RPC服务端处理器）
  */
-@Slf4j
 public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest> {
+
+    private static final Logger log = LoggerFactory.getLogger(RpcServerHandler.class);
 
     private final Map<String, Object> handlerMap;
 

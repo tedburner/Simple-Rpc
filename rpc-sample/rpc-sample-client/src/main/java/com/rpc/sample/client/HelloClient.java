@@ -15,6 +15,7 @@ public class HelloClient {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         RpcProxy rpcProxy = context.getBean(RpcProxy.class);
+        System.out.println("------------ RPC ----------------");
 
         HelloService helloService = rpcProxy.create(HelloService.class);
         String result = helloService.hello("World");

@@ -6,21 +6,23 @@ import com.simple.common.exception.SystemException;
 import com.simple.common.util.IDUtils;
 import com.simple.rpc.client.client.RpcClient;
 import com.simple.rpc.registry.ServiceDiscovery;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.UUID;
 
 /**
  * @author: lingjun.jlj
  * @date: 2019/5/5 13:35
  * @description: Rpc 代理
  */
-@Slf4j
+
 public class RpcProxy {
+
+    private static final Logger log = LoggerFactory.getLogger(RpcProxy.class);
 
     private String serviceAddress;
 
@@ -47,37 +49,39 @@ public class RpcProxy {
                 new InvocationHandler() {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        //创建RPC请对并设置请求参数
+                        // 创建 RPC 请求对象并设置请求属性
                         RpcRequest request = new RpcRequest();
                         request.setRequestId(IDUtils.generateId());
+                        request.setInterfaceName(method.getDeclaringClass().getName());
                         request.setServiceVersion(serviceVersion);
                         request.setMethodName(method.getName());
                         request.setParameterTypes(method.getParameterTypes());
                         request.setParameters(args);
-                        //获取服务地址
+                        // 获取 RPC 服务地址
                         if (serviceDiscovery != null) {
                             String serviceName = interfaceClass.getName();
                             if (StringUtils.isNotEmpty(serviceVersion)) {
                                 serviceName += "-" + serviceVersion;
                             }
                             serviceAddress = serviceDiscovery.discover(serviceName);
-                            log.info("discover service: {} => {}", serviceName, serviceAddress);
+                            log.debug("discover service: {} => {}", serviceName, serviceAddress);
                         }
                         if (StringUtils.isEmpty(serviceAddress)) {
-                            throw new SystemException("service address is empty");
+                            throw new RuntimeException("server address is empty");
                         }
-                        //从服务地址中解析主机名与端口号
+                        // 从 RPC 服务地址中解析主机名与端口号
                         String[] array = StringUtils.split(serviceAddress, ":");
                         String host = array[0];
-                        int port = Integer.valueOf(array[1]);
-                        //创建RPC 客户端对象并发送RPC请求
+                        int port = Integer.parseInt(array[1]);
+                        // 创建 RPC 客户端对象并发送 RPC 请求
                         RpcClient client = new RpcClient(host, port);
-                        Long startTime = System.currentTimeMillis();
+                        long time = System.currentTimeMillis();
                         RpcResponse response = client.send(request);
-                        log.info("execute time {}:ms", System.currentTimeMillis() - startTime);
+                        log.debug("execute time: {}ms", System.currentTimeMillis() - time);
                         if (response == null) {
-                            throw new SystemException("response is null");
+                            throw new RuntimeException("response is null");
                         }
+                        // 返回 RPC 响应结果
                         if (response.hasException()) {
                             throw response.getException();
                         } else {

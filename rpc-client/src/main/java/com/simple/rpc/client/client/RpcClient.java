@@ -15,15 +15,17 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author: lingjun.jlj
  * @date: 2019/5/5 13:30
  * @description:
  */
-@Slf4j
 public class RpcClient extends SimpleChannelInboundHandler<RpcResponse> {
+
+    private static final Logger log = LoggerFactory.getLogger(RpcClient.class);
 
     private final String host;
     private final int port;
