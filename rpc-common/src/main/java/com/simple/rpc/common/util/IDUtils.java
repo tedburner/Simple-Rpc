@@ -1,4 +1,4 @@
-package com.simple.common.util;
+package com.simple.rpc.common.util;
 
 import java.util.UUID;
 

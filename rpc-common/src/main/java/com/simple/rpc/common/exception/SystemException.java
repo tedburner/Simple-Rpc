@@ -1,4 +1,4 @@
-package com.simple.common.exception;
+package com.simple.rpc.common.exception;
 
 /**
  * @author: lingjun.jlj

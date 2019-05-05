@@ -1,9 +1,8 @@
 package com.simple.rpc.registry.zookeeper.discovery;
 
-import com.simple.common.exception.SystemException;
+import com.simple.rpc.common.exception.SystemException;
 import com.simple.rpc.registry.zookeeper.constant.ZkConstants;
 import com.simple.rpc.registry.ServiceDiscovery;
-import lombok.extern.slf4j.Slf4j;
 import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;

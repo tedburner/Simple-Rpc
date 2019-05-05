@@ -1,9 +1,9 @@
 package com.simple.rpc.client.client;
 
-import com.simple.common.bean.RpcRequest;
-import com.simple.common.bean.RpcResponse;
-import com.simple.common.codec.RpcDecoder;
-import com.simple.common.codec.RpcEncoder;
+import com.simple.rpc.common.bean.RpcRequest;
+import com.simple.rpc.common.bean.RpcResponse;
+import com.simple.rpc.common.codec.RpcDecoder;
+import com.simple.rpc.common.codec.RpcEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;

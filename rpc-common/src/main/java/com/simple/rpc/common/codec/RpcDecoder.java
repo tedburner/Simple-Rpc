@@ -1,6 +1,6 @@
-package com.simple.common.codec;
+package com.simple.rpc.common.codec;
 
-import com.simple.common.util.SerializationUtils;
+import com.simple.rpc.common.util.SerializationUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

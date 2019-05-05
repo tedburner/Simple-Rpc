@@ -1,4 +1,4 @@
-package com.simple.common.bean;
+package com.simple.rpc.common.bean;
 
 import lombok.Data;
 

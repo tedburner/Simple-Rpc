@@ -1,10 +1,10 @@
-package com.simple.common.util;
+package com.simple.rpc.common.util;
 
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtostuffIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
-import com.simple.common.exception.SystemException;
+import com.simple.rpc.common.exception.SystemException;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
 
