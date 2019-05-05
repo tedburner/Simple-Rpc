@@ -13,6 +13,8 @@
         <module>rpc-registry-zookeeper</module>
         <module>rpc-common</module>
         <module>rpc-server</module>
+        <module>rpc-client</module>
+        <module>rpc-sample</module>
     </modules>
 
     <properties>

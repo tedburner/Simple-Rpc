@@ -3,41 +3,36 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>rpc</artifactId>
+        <artifactId>rpc-sample</artifactId>
         <groupId>com.simple.rpc</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rpc-server</artifactId>
+    <artifactId>rpc-sample-client</artifactId>
 
     <dependencies>
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
+        <!-- RPC Sample API -->
         <dependency>
             <groupId>com.simple.rpc</groupId>
-            <artifactId>rpc-registry-zookeeper</artifactId>
+            <artifactId>rpc-sample-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- RPC Client -->
+        <dependency>
+            <groupId>com.simple.rpc</groupId>
+            <artifactId>rpc-client</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
 
 </project>
