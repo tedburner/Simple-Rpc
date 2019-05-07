@@ -4,6 +4,11 @@ import com.rpc.sample.api.domain.UserDO;
 import com.rpc.sample.api.service.HelloService;
 import com.simple.rpc.server.annotation.Reference;
 
+/**
+ * @author: lingjun.jlj
+ * @date: 2019/5/5 14:07
+ * @description:
+ */
 @Reference(value = HelloService.class, version = "sample.hello2")
 public class HelloServiceImpl2 implements HelloService {
 

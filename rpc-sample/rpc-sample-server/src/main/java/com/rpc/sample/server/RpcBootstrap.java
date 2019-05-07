@@ -11,10 +11,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class RpcBootstrap {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RpcBootstrap.class);
+    private static final Logger logger = LoggerFactory.getLogger(RpcBootstrap.class);
 
     public static void main(String[] args) {
-        LOGGER.debug("start server");
+        logger.debug("start server");
+        System.out.println("start server");
         new ClassPathXmlApplicationContext("spring.xml");
     }
 }

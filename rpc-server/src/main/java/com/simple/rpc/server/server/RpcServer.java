@@ -1,9 +1,10 @@
 package com.simple.rpc.server.server;
 
-import com.simple.common.bean.RpcRequest;
-import com.simple.common.bean.RpcResponse;
-import com.simple.common.codec.RpcDecoder;
-import com.simple.common.codec.RpcEncoder;
+
+import com.simple.rpc.common.bean.RpcRequest;
+import com.simple.rpc.common.bean.RpcResponse;
+import com.simple.rpc.common.codec.RpcDecoder;
+import com.simple.rpc.common.codec.RpcEncoder;
 import com.simple.rpc.registry.ServiceRegistry;
 import com.simple.rpc.server.annotation.Reference;
 import com.simple.rpc.server.handler.RpcServerHandler;

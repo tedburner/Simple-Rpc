@@ -1,11 +1,11 @@
 package com.simple.rpc.server.handler;
 
-import com.simple.common.bean.RpcRequest;
-import com.simple.common.bean.RpcResponse;
-import com.simple.common.exception.SystemException;
+import com.simple.rpc.common.bean.RpcRequest;
+import com.simple.rpc.common.bean.RpcResponse;
+import com.simple.rpc.common.exception.SystemException;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
 import org.apache.commons.lang3.StringUtils;
@@ -30,16 +30,20 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcRequest> {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, RpcRequest request) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, RpcRequest request) throws Exception {
         //创建并初始化 RPC 响应对象
         RpcResponse response = new RpcResponse();
         response.setRequestId(request.getRequestId());
         try {
             Object result = handle(request);
+            response.setResult(result);
         } catch (Exception e) {
             log.error("handle rpc server failure: ", e);
-
+            response.setException(e);
         }
+        //写入 RPC 相应对象并自动关闭连接
+        ctx.writeAndFlush(response)
+                .addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override

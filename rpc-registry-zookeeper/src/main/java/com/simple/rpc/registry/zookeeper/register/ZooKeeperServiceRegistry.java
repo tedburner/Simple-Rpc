@@ -20,7 +20,7 @@ public class ZooKeeperServiceRegistry implements ServiceRegistry {
     public ZooKeeperServiceRegistry(String zkAddress) {
         // 创建 ZooKeeper 客户端
         zkClient = new ZkClient(zkAddress, ZkConstants.SESSION_TIMEOUT, ZkConstants.CONNECTION_TIMEOUT);
-        log.info("connect zookeeper");
+        log.debug("connect zookeeper");
     }
 
     @Override
@@ -30,29 +30,22 @@ public class ZooKeeperServiceRegistry implements ServiceRegistry {
             String registryPath = ZkConstants.REGISTRY_PATH;
             if (!zkClient.exists(registryPath)) {
                 zkClient.createPersistent(registryPath);
-                log.info("zk create registry node: {}", registryPath);
+                log.debug("zk create registry node: {}", registryPath);
             }
             //创建服务节点（持久化）
             String servicePath = registryPath + "/" + serviceName;
             if (!zkClient.exists(servicePath)) {
                 zkClient.createPersistent(servicePath);
-                log.info("zk create service node: {}", servicePath);
+                log.debug("zk create service node: {}", servicePath);
             }
             //创建 address 节点（临时）
             String addressPath = servicePath + "/address-";
             String addressNode = zkClient.createEphemeralSequential(addressPath, serviceAddress);
-            log.info("zk create ip address node: {}", addressNode);
+            log.debug("zk create ip address node: {}", addressNode);
         } catch (Exception e) {
             e.printStackTrace();
             log.error("zk create error: {}", e.getMessage());
         }
 
     }
-
-//    @Override
-//    public void process(WatchedEvent watchedEvent) {
-//        if (watchedEvent.getState() == Event.KeeperState.SyncConnected) {
-//            latch.countDown();
-//        }
-//    }
 }
