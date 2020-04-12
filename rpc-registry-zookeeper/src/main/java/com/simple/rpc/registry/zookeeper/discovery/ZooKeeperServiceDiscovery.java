@@ -21,7 +21,7 @@ public class ZooKeeperServiceDiscovery implements ServiceDiscovery {
 
     private static final Logger log = LoggerFactory.getLogger(ZooKeeperServiceDiscovery.class);
 
-    private String zkAddress;
+    private final String zkAddress;
     public ZooKeeperServiceDiscovery(String zkAddress) {
         this.zkAddress = zkAddress;
     }

@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * @author: lingjun.jlj
  * @date: 2019/5/5 14:11
- * @description:
+ * @description: RPC DEMO 客户端
  */
 public class HelloClient {
 

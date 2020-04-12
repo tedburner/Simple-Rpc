@@ -10,7 +10,7 @@ import com.simple.rpc.server.annotation.Reference;
  * @description:
  */
 @Reference(value = HelloService.class, version = "sample.hello2")
-public class HelloServiceImpl2 implements HelloService {
+public class Hello2ServiceImpl implements HelloService {
 
     @Override
     public String hello(String name) {
